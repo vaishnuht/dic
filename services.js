@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
 
             <div class="mt-12 text-center">
-                <a href="#consultation" class="inline-block bg-green-500 hover:bg-green-600 text-white font-semibold px-8 py-3 rounded-lg transition-colors animate__animated animate__fadeInUp">
+                <a href="#contact" class="inline-block bg-green-500 hover:bg-green-600 text-white font-semibold px-8 py-3 rounded-lg transition-colors animate__animated animate__fadeInUp">
                     Schedule a Consultation
                 </a>
             </div>

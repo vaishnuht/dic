@@ -12,9 +12,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 <!-- Desktop Menu -->
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-center space-x-6">
+                    <a href="#hero" class="hover:text-green-400 transition-colors">Home</a>
                         <a href="#services" class="hover:text-green-400 transition-colors">Services</a>
                         <a href="#expertAdvice" class="hover:text-green-400 transition-colors">Care Tips</a>
-                        <a href="#consultation" class="hover:text-green-400 transition-colors">Consultation</a>
                         <a href="#contact" class="hover:text-green-400 transition-colors">Contact</a>
                     </div>
                 </div>

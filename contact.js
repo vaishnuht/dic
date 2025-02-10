@@ -1,3 +1,6 @@
+// import emailer from "./emailer.js";
+import emailer from './emailer.js';
+
 document.addEventListener('DOMContentLoaded', () => {
     const expertAdviceSection = document.getElementById('contact');
     expertAdviceSection.innerHTML = `
@@ -6,9 +9,8 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid md:grid-cols-2 gap-12">
                 <div class="animate__animated animate__fadeInLeft">
-                    <h2 class="text-3xl md:text-4xl font-bold text-neutral-800 mb-6">Get in Touch</h2>
-                    <p class="text-lg text-neutral-600 mb-8">Have questions about plant care? We're here to help your garden thrive.</p>
-                    
+                <h2 class="text-3xl md:text-4xl font-bold text-neutral-800 mb-6">Get Expert Plant Care Consultation</h2>
+                <p class="text-lg text-neutral-600 font-bold mb-8">Share your plant concerns and get personalized advice from our experts</p>
                     <form class="space-y-6" id="contactForm">
                         <div class="grid md:grid-cols-2 gap-6">
                             <div>
@@ -84,13 +86,26 @@ document.addEventListener('DOMContentLoaded', () => {
                     <option value="other" >Other</option>
                     </select>
                 </div>
-
+                <div>
+                <label class="block text-sm font-medium text-neutral-700 mb-2">Geo Location</label>
+                <textarea rows="4" name="location" class="w-full px-4 py-2 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"></textarea>
+            </div>
+                <div>
+                <label class="block text-sm font-medium text-neutral-700 mb-2">Garden Orientation</label>
+                <textarea rows="2" name="orientation" class="w-full px-4 py-2 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"></textarea>
+            </div>
+            <div>
+            <label class="block text-sm font-medium text-neutral-700 mb-2">Garden Purpose</label>
+            <textarea rows="2" name="purpose" class="w-full px-4 py-2 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"></textarea>
+        </div>
                         <div>
                             <label class="block text-sm font-medium text-neutral-700 mb-2">Message</label>
-                            <textarea rows="4" name="description" class="w-full px-4 py-2 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent" required></textarea>
+                            <textarea rows="4" name="description" placeholder="More Specification About Your Garden" class="w-full px-4 py-2 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"></textarea>
                         </div>
+                        
+                       
 
-                        <button type="submit" class="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors">
+                        <button type="submit"  class="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors">
                             Send Message
                         </button>
                     </form>
@@ -181,7 +196,9 @@ const form=document.getElementById('contactForm');
            const area=document.querySelector('input[name="length"]').value +" "+ document.querySelector('input[name="breadth"]').value;
            const gardenType = document.querySelector('select[name="garden"]').value;
            const light=document.querySelector('select[name="exposure"]').value+" "+ document.querySelector('select[name="duration"]').value;
-        
+           const location=document.querySelector('textarea[name="location"]').value;
+           const orientation=document.querySelector('textarea[name="orientation"]').value;
+           const purpose = document.querySelector('textarea[name="purpose"]').value;
            const formData = {
             customerName: name,
             customerEmail: email,
@@ -194,7 +211,7 @@ const form=document.getElementById('contactForm');
            // Include the message in the form data
         };
 
-           fetch('/customer', {  // Replace with your backend endpoint
+           fetch('http://localhost:3000/customer', {  // Replace with your backend endpoint
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -204,13 +221,14 @@ const form=document.getElementById('contactForm');
         .then(async response => {
             if (!response.ok) {
               const err = await response.text();
-                throw new Error(`${response.status} - ${response.statusText}: ${err}`); // Include status and message
+                throw new Error(`${err}`); // Include status and message
             }
             return response.json();
           })
         .then(data => {
             console.log('Success:', data);
             alert("Form submitted successfully!"); // Or a more user-friendly message
+            emailer(formData);
             this.reset(); // Clear the form after successful submission
         })
         .catch(error => {
@@ -221,6 +239,36 @@ const form=document.getElementById('contactForm');
         });
 });
 
+const email=(formData)=>{
+    const transporter = nodemailer.createTransport({
+        service: 'gmail',
+        secure:true,
+        port:465,
+        auth: {
+          user: 'vaishnuht@gmail.com',
+          pass: 'ohfzbeqtvqxmmysr'
+        }
+      });
+    
+
+
+  var mailOptions = {
+    from: 'vaishnuht@gmail.com',
+    to: 'vaishnuht@gmail.com',
+    subject: 'Sending Email using Node.js',
+    text: `sfdkhgkhdfk`
+  };
+  transporter.sendMail(mailOptions, function(error, info){
+    if (error) {
+      console.log(error);
+    } else {
+      console.log('Email sent: ' + info.response);
+      response.end();
+    }
+  });
+
+  }
+  
 function submit(){
     alert("Form submitted");
     

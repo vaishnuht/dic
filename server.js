@@ -1,7 +1,8 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const mysql = require('mysql2');
-const cors = require("cors");
+import express from 'express';
+import bodyParser from 'body-parser';
+import mysql from 'mysql2';
+import cors from 'cors';
+
 const app = express();
 const port=3000;
 
@@ -26,13 +27,13 @@ app.listen(port, () => {
 
 app.post('/customer', async (req, res)=>{
     const { customerName, customerEmail,customerContact, customerAddress, customerGarden, customerArea ,customerSpecification, lightDuration}= req.body;
-    if(!customerName || !customerEmail || !customerContact || !customerAddress || !customerGarden || !customerArea|| !customerSpecification|| !lightDuration){
+    if(!customerName || !customerEmail || !customerContact || !customerAddress || !customerGarden || !customerArea|| !lightDuration){
         return res.status(400).json({success:false, message: 'All fields are required'});
     }
     try {
         db.query('INSERT INTO customer (customerName, customerEmail, customerContact, customerAddress, customerGarden, customerArea, customerSpecification, lightDuration) VALUES (?, ?, ?, ?, ?,?, ?,?)', [customerName, customerEmail, customerContact, customerAddress, customerGarden ,customerArea, customerSpecification, lightDuration], (err, results) => {
             if (err){
-                res.status(400).json({success: false, message:'Database error '})
+                res.status(400).json({success: false, message:'Email already Exists'})
             }
             db.query('SELECT * FROM customer ORDER BY customerid DESC LIMIT 1', (err, results) => {
                 if (err) {  
@@ -74,7 +75,7 @@ app.put('/customer/:id', async (req, res)=>{
     const id=  req.params.id;
     const { customerName, customerEmail, customerContact, customerAddress, customerGarden, customerArea, customerSpecification, lightDuration} = req.body;
     
-    if (!customerName ||! customerEmail || !customerContact || !customerAddress || !customerGarden ||!customerArea || !customerSpecification|| !lightDuration) {
+    if (!customerName ||! customerEmail || !customerContact || !customerAddress || !customerGarden ||!customerArea || !lightDuration) {
         return res.status(400).json({ success: false, message: 'All fields are required' });
     }
    

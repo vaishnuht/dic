@@ -8,8 +8,13 @@
   },
   "author": "",
   "license": "ISC",
-  "description": "",
+  "type": "module",
   "dependencies": {
-    "cors": "^2.8.5"
-  }
+    "cors": "^2.8.5",
+    "http": "^0.0.1-security",
+    "nodemailer": "^6.10.0"
+  },
+  "devDependencies": {},
+  "keywords": [],
+  "description": ""
 }

@@ -14,12 +14,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     Transform your space with thriving plants. Get personalized advice from our plant care experts and watch your garden flourish.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="#consultation" class="inline-block bg-green-500 hover:bg-green-600 text-white font-semibold px-8 py-3 rounded-lg transition-colors text-center">
+                    <a href="#contact" class="inline-block bg-green-500 hover:bg-green-600 text-white font-semibold px-8 py-3 rounded-lg transition-colors text-center">
                         Get Plant Care Advice
                     </a>
-                    <a href="#contact" class="inline-block bg-neutral-700 hover:bg-neutral-600 text-white font-semibold px-8 py-3 rounded-lg transition-colors text-center">
-                        Contact Expert
-                    </a>
+                    
                 </div>
                 <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 text-center animate__animated animate__fadeInUp">
                 <div class="p-4 rounded-lg bg-neutral-800/50">
