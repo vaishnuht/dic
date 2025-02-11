@@ -2,7 +2,11 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import mysql from 'mysql2';
 import cors from 'cors';
-
+// import emailer from './emailer.js';
+// const nodemailer =require('nodemailer');
+// const http = require('http');
+import nodemailer from 'nodemailer';
+import http from 'http'
 const app = express();
 const port=3000;
 
@@ -39,6 +43,7 @@ app.post('/customer', async (req, res)=>{
                 if (err) {  
                     res.status(400).json({success: false, message:'Database error '})   
                     }
+                    email( customerName, customerEmail,customerContact, customerAddress, customerGarden, customerArea ,customerSpecification, lightDuration);
                     res.status(200).json({success: true, message: 'customer added successfully', data: results[0]});
             })
         });
@@ -116,3 +121,33 @@ app.delete('/customer/:id', async (req, res)=>{
     });
 
 });
+function email ( customerName, customerEmail,customerContact, customerAddress, customerGarden, customerArea ,customerSpecification, lightDuration){
+    const transporter = nodemailer.createTransport({
+        service: 'gmail',
+        // host: 'smtp.gmail.com',
+        secure:true,
+        port:465,
+        auth: {
+          user: 'vaishnuht@gmail.com',
+          pass: 'plosipoyqtwujngp'
+        }
+      });
+    
+
+
+  var mailOptions = {
+    from: 'vaishnuht@gmail.com',
+    to: `${customerEmail}`,
+    subject: 'Thank You For Connecting With Us',
+    text: `Thank You : ${customerName} \n  We will connect you through ${customerContact}, ${customerAddress} \n Your specifications are ${ customerGarden}, ${customerArea} ,${customerSpecification}, ${lightDuration}`
+  };
+  transporter.sendMail(mailOptions, function(error, info){
+    if (error) {
+      console.log(error);
+    } else {
+      console.log('Email sent: ' + info.response);
+      response.end();
+    }
+  });
+
+  }

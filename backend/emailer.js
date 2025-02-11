@@ -1,18 +1,17 @@
-// const express = require('express');
-// const http=require('http');
-import nodemailer from 'nodemailer';
-// const mailer=require('nodemailer');
-
-
-// const server=http.createServer((request, response)=>{
-  const email=(formData)=>{
+// import nodemailer from 'nodemailer';
+// import http from 'http'
+const nodemailer =require('nodemailer');
+const http = require('http');
+const server=http.createServer((request, response)=>{
+  function email (email,formData){
     const transporter = nodemailer.createTransport({
         service: 'gmail',
+        // host: 'smtp.gmail.com',
         secure:true,
         port:465,
         auth: {
           user: 'vaishnuht@gmail.com',
-          pass: 'ohfzbeqtvqxmmysr'
+          pass: 'plosipoyqtwujngp'
         }
       });
     
@@ -22,7 +21,7 @@ import nodemailer from 'nodemailer';
     from: 'vaishnuht@gmail.com',
     to: 'vaishnuht@gmail.com',
     subject: 'Sending Email using Node.js',
-    text: `sfdkhgkhdfk`
+    text: "formData"
   };
   transporter.sendMail(mailOptions, function(error, info){
     if (error) {
@@ -35,7 +34,7 @@ import nodemailer from 'nodemailer';
 
   }
   
-// })
+})
 // email();
-// server.listen(8080);
-export default email;
+server.listen(8080);
+// export default email;

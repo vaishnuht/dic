@@ -35,7 +35,9 @@
 * {
     -webkit-tap-highlight-color: transparent;
 }
-
+html {
+    scroll-behavior: smooth;
+  }
 /* Improve text rendering */
 body {
     text-rendering: optimizeLegibility;

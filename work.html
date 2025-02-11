@@ -51,17 +51,17 @@
       <meta property="og:locale" content="en_US">
       <!-- Base Styles -->
       <style rel="stylesheet" href="style.css" > </style>
-      <script src="image-handler.js" defer></script>
-    <script src="performance-monitoring.js" defer></script>
-    <script src="offline-handler.js" defer></script>
+      <script src="./backend/image-handler.js" defer></script>
+    <script src="./backend/performance-monitoring.js" defer></script>
+    <script src="./backend/offline-handler.js" defer></script>
 
-    <script src="navbar.js" defer></script>
-    <script src="contact.js" defer></script>
-    <script src="hero.js" defer></script>
-    <script src="services.js" defer></script>
-    <script src="expert-advice.js" defer></script>
+    <!-- <script src="/project/view/" defer></script> -->
+    <script src="./view/contact.js" defer></script>
+    <script src="./view/hero.js" defer></script>
+    <script src="./view/services.js" defer></script>
+    <script src="./view/expert-advice.js" defer></script>
     <!-- <script src="consultation.js" defer></script> -->
-    <script src="footer.js" defer></script>
+    <script src="./view/footer.js" defer></script>
 
    </head>
    <body class="antialiased text-gray-800 min-h-screen flex flex-col">
@@ -86,11 +86,9 @@
         <section id="expert-advice"> </section>
         <!-- <section id="consultation"> </section> -->
         <section id="contact"> </section>
-        <script type="module" src="path/to/your/contact.js"></script>
+        <script type="module" src="/view/contact.js"></script>
       </main>
-
       <!-- {bodyScripts} -->
-
    </body>
 <htmlCode>
     <footer id="footer"></footer>

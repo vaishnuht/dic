@@ -1,5 +1,3 @@
-// import emailer from "./emailer.js";
-import emailer from './emailer.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     const expertAdviceSection = document.getElementById('contact');
@@ -29,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                         <div>
                             <label class="block text-sm font-medium text-neutral-700 mb-2">Contact</label>
-                            <input type="number" name="contact"  id="contact" class="w-full px-4 py-2 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent" pattern="[0-9]{10}" required>
+                            <input type="number" name="number"  id="contact" class="w-full px-4 py-2 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent" pattern="[0-9]{10}" required>
                         </div>
                         <div>
                         <label class="block text-sm font-medium text-neutral-700 mb-2">Address</label>
@@ -190,7 +188,7 @@ const form=document.getElementById('contactForm');
             // 1. Gather Form Data (Handling each input individually)
             const name = document.querySelector('input[name="firstName"]').value+" "+ document.querySelector('input[name="lastName"]').value;
             const email = document.querySelector('input[name="email"]').value;
-            const contact = document.querySelector('input[name="contact"]').value;
+            const contact = document.querySelector('input[name="number"]').value;
             const address=document.querySelector('input[name="address"]').value;
             const description = document.querySelector('textarea[name="description"]').value;
            const area=document.querySelector('input[name="length"]').value +" "+ document.querySelector('input[name="breadth"]').value;
@@ -228,7 +226,7 @@ const form=document.getElementById('contactForm');
         .then(data => {
             console.log('Success:', data);
             alert("Form submitted successfully!"); // Or a more user-friendly message
-            emailer(formData);
+           
             this.reset(); // Clear the form after successful submission
         })
         .catch(error => {
@@ -239,35 +237,6 @@ const form=document.getElementById('contactForm');
         });
 });
 
-const email=(formData)=>{
-    const transporter = nodemailer.createTransport({
-        service: 'gmail',
-        secure:true,
-        port:465,
-        auth: {
-          user: 'vaishnuht@gmail.com',
-          pass: 'ohfzbeqtvqxmmysr'
-        }
-      });
-    
-
-
-  var mailOptions = {
-    from: 'vaishnuht@gmail.com',
-    to: 'vaishnuht@gmail.com',
-    subject: 'Sending Email using Node.js',
-    text: `sfdkhgkhdfk`
-  };
-  transporter.sendMail(mailOptions, function(error, info){
-    if (error) {
-      console.log(error);
-    } else {
-      console.log('Email sent: ' + info.response);
-      response.end();
-    }
-  });
-
-  }
   
 function submit(){
     alert("Form submitted");
