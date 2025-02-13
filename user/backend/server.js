@@ -124,7 +124,7 @@ function email ( customerName, customerEmail){
         port:465,
         auth: {
           user: 'vaishnuht@gmail.com',
-          pass: 'plosipoyqtwujngp'
+          pass: 'XXXXXXXXXXXXX'
         }
       });
     
