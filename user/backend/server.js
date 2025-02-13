@@ -2,15 +2,10 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import mysql from 'mysql2';
 import cors from 'cors';
-// import emailer from './emailer.js';
-// const nodemailer =require('nodemailer');
-// const http = require('http');
 import nodemailer from 'nodemailer';
 import http from 'http'
 const app = express();
 const port=3000;
-
-// app.use(bodyParser.json());
 
 app.use(cors()); // Enable CORS for all origins (or configure as needed)
 app.use(bodyParser.json());
@@ -30,12 +25,12 @@ app.listen(port, () => {
 });
 
 app.post('/customer', async (req, res)=>{
-    const { customerName, customerEmail,customerContact, customerAddress, customerGarden, customerArea ,customerSpecification, lightDuration}= req.body;
-    if(!customerName || !customerEmail || !customerContact || !customerAddress || !customerGarden || !customerArea|| !lightDuration){
+    const { customerName, customerEmail,customerContact, customerAddress, customerGarden, customerArea ,customerSpecification, lightDuration, orientation,purpose}= req.body;
+    if(!customerName || !customerEmail || !customerContact || !customerAddress || !customerGarden || !customerArea|| !lightDuration ){
         return res.status(400).json({success:false, message: 'All fields are required'});
     }
     try {
-        db.query('INSERT INTO customer (customerName, customerEmail, customerContact, customerAddress, customerGarden, customerArea, customerSpecification, lightDuration) VALUES (?, ?, ?, ?, ?,?, ?,?)', [customerName, customerEmail, customerContact, customerAddress, customerGarden ,customerArea, customerSpecification, lightDuration], (err, results) => {
+        db.query('INSERT INTO customer (customerName, customerEmail, customerContact, customerAddress, customerGarden, customerArea, customerSpecification, lightDuration, gardenOrientaion, gardenPurpose) VALUES (?, ?, ?, ?, ?,?, ?,?)', [customerName, customerEmail, customerContact, customerAddress, customerGarden ,customerArea, customerSpecification, lightDuration], (err, results) => {
             if (err){
                 res.status(400).json({success: false, message:'Email already Exists'})
             }
@@ -43,7 +38,7 @@ app.post('/customer', async (req, res)=>{
                 if (err) {  
                     res.status(400).json({success: false, message:'Database error '})   
                     }
-                    email( customerName, customerEmail,customerContact, customerAddress, customerGarden, customerArea ,customerSpecification, lightDuration);
+                    email( customerName, customerEmail);
                     res.status(200).json({success: true, message: 'customer added successfully', data: results[0]});
             })
         });
@@ -121,7 +116,7 @@ app.delete('/customer/:id', async (req, res)=>{
     });
 
 });
-function email ( customerName, customerEmail,customerContact, customerAddress, customerGarden, customerArea ,customerSpecification, lightDuration){
+function email ( customerName, customerEmail){
     const transporter = nodemailer.createTransport({
         service: 'gmail',
         // host: 'smtp.gmail.com',
@@ -138,8 +133,8 @@ function email ( customerName, customerEmail,customerContact, customerAddress, c
   var mailOptions = {
     from: 'vaishnuht@gmail.com',
     to: `${customerEmail}`,
-    subject: 'Thank You For Connecting With Us',
-    text: `Thank You : ${customerName} \n  We will connect you through ${customerContact}, ${customerAddress} \n Your specifications are ${ customerGarden}, ${customerArea} ,${customerSpecification}, ${lightDuration}`
+    subject: 'Thank You For Connecting With PlantCare',
+    text: `Dear  ${customerName}, \n \n Thanks for Contacting Us. \n We will get back to you soon. \n Have a good day. \nThanks and Regards, \nPlantCare Consultation \nContact: 1223456789\nwebsite: dcghj@gj.hk\nsocial media `
   };
   transporter.sendMail(mailOptions, function(error, info){
     if (error) {

@@ -3,10 +3,10 @@ document.addEventListener('DOMContentLoaded', () => {
     heroSection.innerHTML = `
     
 <div id="root">
-<section id="hero" class="bg-neutral-900 text-white pt-16 min-h-[70vh] flex items-center">
+<section id="hero" class="bg-emerald-800 text-white pt-16 min-h-[70vh] flex items-center rounded-3xl">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div class="grid md:grid-cols-2 gap-8 items-center">
-            <div class="space-y-8 animate__animated animate__fadeInLeft">
+        <div class="grid md:grid-cols-2 gap-8 items-center ">
+            <div class="space-y-8 animate__animated animate__fadeInLeft ">
                 <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
                     Expert Plant Care <span class="text-green-400">Consultation</span>
                 </h1>

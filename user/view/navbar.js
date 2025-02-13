@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const header = document.getElementById('main-header');
     header.innerHTML = `
     <div id="root">
-    <nav id="navbar" class="fixed w-full bg-neutral-900 text-white z-50">
+    <nav id="navbar" class="fixed w-full bg-emerald-900 oklch(0.984 0.014 0.72) text-white z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
                 <div class="flex items-center">

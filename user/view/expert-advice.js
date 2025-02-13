@@ -2,11 +2,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const expertAdviceSection = document.getElementById('expert-advice');
     expertAdviceSection.innerHTML = `
     <div id="root">
-    <section id="expertAdvice" class="py-20 bg-neutral-50">
+    <section id="expertAdvice" class="py-20 bg-secondary-400">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 animate__animated animate__fadeInUp">
-                <h2 class="text-3xl md:text-4xl font-bold text-neutral-800 mb-4">Plant Care Tips</h2>
-                <p class="text-neutral-600 text-lg">Professional guidance for healthy and thriving plants</p>
+                <h2 class="text-3xl md:text-4xl font-bold text-green-400 mb-4">Plant Care Tips</h2>
+                <p class="text-neutral-100 text-lg">Professional guidance for healthy and thriving plants</p>
             </div>
 
             <div class="grid md:grid-cols-2 gap-12">
