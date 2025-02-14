@@ -10,11 +10,12 @@
   "license": "ISC",
   "type": "module",
   "dependencies": {
+    "@tailwindcss/vite": "^4.0.6",
     "cors": "^2.8.5",
     "http": "^0.0.1-security",
-    "nodemailer": "^6.10.0"
+    "nodemailer": "^6.10.0",
+    "tailwindcss": "^4.0.6"
   },
-  "devDependencies": {},
   "keywords": [],
   "description": ""
 }
