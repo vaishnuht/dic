@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PlantCare</title>
+
+  <!-- SEO & Metadata -->
+  <meta name="description" content="PlantCare - Your guide to plant care and maintenance.">
+  <meta name="theme-color" content="#ffffff">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body class="flex">
+  
+  <!-- Sidebar Navigation -->
+  <nav class="w-64 bg-white border-r border-gray-200 flex flex-col min-h-screen p-4">
+    <h1 class="text-2xl font-bold text-green-700 mb-6">PlantCare</h1>
+    <a href="#" onclick="loadPage('./overview.html')" class="block py-2 px-4 text-gray-700 hover:bg-green-100 rounded">Overview</a>
+    <a href="#" onclick="loadPage('./message.html')" class="block py-2 px-4 text-gray-700 hover:bg-green-100 rounded">Messages</a>
+    <a href="#" onclick="loadPage('./analytics.html')" class="block py-2 px-4 text-gray-700 hover:bg-green-100 rounded">Analytics</a>
+  </nav>
+
+  <!-- Main Content -->
+  <main id="content" class="flex-1 p-6">
+    <h2>Welcome to PlantCare</h2>
+  </main>
+
+  <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        loadPage("overview.html"); // Ensure this function correctly loads content into your main container
+    });
+    function loadPage(page) {
+        fetch(page)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Page not found: " + page);
+                }
+                return response.text();
+            })
+            .then(data => {
+                document.getElementById("content").innerHTML = data;
+            })
+            .catch(error => {
+                console.error("Error loading page:", error);
+                document.getElementById("content").innerHTML = "<p style='color: red;'>Failed to load content. Please check the file path.</p>";
+            });
+    }
+  </script>
+
+</body>
+</html>
