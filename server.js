@@ -24,37 +24,85 @@ app.listen(port, () => {
     console.log('Server started on http://localhost:3000');
 });
 
-app.post('/customer', async (req, res)=>{
-    const { customerName, customerEmail,customerContact, customerAddress, customerGarden, customerArea ,customerSpecification, lightDuration, orientation,purpose}= req.body;
-    if(!customerName || !customerEmail || !customerContact || !customerAddress || !customerGarden || !customerArea|| !lightDuration ){
-        return res.status(400).json({success:false, message: 'All fields are required'});
+app.post('/customer', async (req, res) => {
+    const {
+        customerName, customerEmail, customerContact, customerAddress,
+        customerGarden, customerArea, customerSpecification, gardenOrientaion,
+        customerQuery, gardenPurpose
+    } = req.body;
+
+    if (!customerName || !customerEmail || !customerContact || !customerAddress || 
+        !customerGarden || !customerArea || !customerQuery) {
+        return res.status(400).json({ success: false, message: 'All fields are required' });
     }
+
     try {
-        db.query('INSERT INTO customer (customerName, customerEmail, customerContact, customerAddress, customerGarden, customerArea, customerSpecification, lightDuration, gardenOrientaion, gardenPurpose) VALUES (?, ?, ?, ?, ?,?, ?,?)', [customerName, customerEmail, customerContact, customerAddress, customerGarden ,customerArea, customerSpecification, lightDuration], (err, results) => {
-            if (err){
-                res.status(400).json({success: false, message:'Email already Exists'})
+        // Insert customer query
+        const insertQuery = `
+            INSERT INTO customer 
+            (customerName, customerEmail, customerContact, customerAddress, 
+            customerGarden, customerArea, customerSpecification, gardenOrientaion, 
+            gardenPurpose, customerStatus, customerQuery) 
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        `;
+
+        const values = [customerName, customerEmail, customerContact, customerAddress, 
+                        customerGarden, customerArea, customerSpecification, gardenOrientaion, 
+                        gardenPurpose, "pending", customerQuery];
+
+        db.query(insertQuery, values, (err, results) => {
+            if (err) {
+                console.error("Database Insert Error:", err);
+                return res.status(500).json({ success: false, message: 'Database error', error: err });
             }
+
+            // Fetch the last inserted customer
             db.query('SELECT * FROM customer ORDER BY customerid DESC LIMIT 1', (err, results) => {
-                if (err) {  
-                    res.status(400).json({success: false, message:'Database error '})   
-                    }
-                    email( customerName, customerEmail);
-                    res.status(200).json({success: true, message: 'customer added successfully', data: results[0]});
-            })
+                if (err) {
+                    console.error("Database Fetch Error:", err);
+                    return res.status(500).json({ success: false, message: 'Database fetch error', error: err });
+                }
+
+                // Send confirmation email
+                email(customerName, customerEmail);
+
+                return res.status(200).json({ 
+                    success: true, 
+                    message: 'Customer added successfully', 
+                    data: results[0] 
+                });
+            });
         });
     } catch (error) {
-        console.error(error);
-        res.status(500).json('Server Error');
+        console.error("Server Error:", error);
+        return res.status(500).json({ success: false, message: 'Server Error', error: error.message });
     }
 });
+
+// total quries 
 app.get('/customer', async (req, res)=>{
     db.query('SELECT * FROM customer ', async (err, results) => {
+        if (err) {
+            console.error("Database query error:", err);
+            return res.status(500).json({ error: "Internal Server Error" });
+        };
+        // const len=0;
+        if ( results.length === 0) {
+            console.log("no data");
+            return res.status(400).json('No customer in database');
+        }
+        res.status(200).json(results);
+    });
+});
+
+app.get('/query', async (req, res)=>{
+    db.query('SELECT * FROM customer where customerStatus like "Pending" ', async (err, results) => {
         if (err) throw err;
         const len=0;
         if (len === results.length) {
-            return res.status(400).json('No customer in database');
+            return res.status(400).json('No Pendings');
         }
-        res.status(201).json(results);
+        res.status(200).json(results);
     });
 });
 app.get('/customer/:id', async (req, res)=>{
@@ -70,7 +118,15 @@ app.get('/customer/:id', async (req, res)=>{
         res.status(201).json(results);
     });
 });
+app.put('/customer/status/:id', async (req, res)=>{
+    const id=  req.params.id;
+    const { customerStatus}=req.body;
+    db.query('UPDATE customer SET customerStatus=? WHERE customerid=? ',[customerStatus,id], (err)=>{
+        if (err) throw err;
+        res.status(200).json({message: 'Customer status updated successfully'});
+    });
 
+});
 app.put('/customer/:id', async (req, res)=>{
     const id=  req.params.id;
     const { customerName, customerEmail, customerContact, customerAddress, customerGarden, customerArea, customerSpecification, lightDuration} = req.body;
@@ -119,17 +175,14 @@ app.delete('/customer/:id', async (req, res)=>{
 function email ( customerName, customerEmail){
     const transporter = nodemailer.createTransport({
         service: 'gmail',
-        // host: 'smtp.gmail.com',
+        host: 'smtp.gmail.com',
         secure:true,
-        port:465,
+        port:587,
         auth: {
           user: 'vaishnuht@gmail.com',
-          pass: 'XXXXXXXXXXXXX'
+          pass: 'esmlppkzqlxdlojn'
         }
       });
-    
-
-
   var mailOptions = {
     from: 'vaishnuht@gmail.com',
     to: `${customerEmail}`,

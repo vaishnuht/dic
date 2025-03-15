@@ -44,38 +44,13 @@ document.addEventListener('DOMContentLoaded', () => {
                         <option value="">Select Garden type</option>
                         <option value="indoor">Indoor</option>
                         <option value="outdoor">Outdoor</option>
-                        <option value="succulents">Succulents</option>
-                        <option value="herbs">Herbs</option>
-                        <option value="hydrophonic">Hydrophonic</option>
                         <option value="vertical">Vertical</option>
                         <option value="other">Other</option>
                      </select>
                         </div>
-                        
-
-                     <div>
-                        <label class="block text-sm font-medium text-neutral-700 mb-2">Sunlight</label>
-                        <select  name="exposure" class="space-y-8 animate__animated animate__fadeInRight px-4 py-2 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent" required>
-                           
-                            <option value="">Select Daily Sunlight Exposure</option>
-                            <option value="full sun" >🌕 Full Sun</option>
-                            <option value="partial sun" >🌓 Partial sun</option>
-                            <option value="shaded Light" >🌒 Shaded Light</option>
-                            <option value="Artificial Light ">💡 Artificial Light</option>
-                        </select>
-
-                        <select  name="duration" class="space-y-8 animate__animated animate__fadeInleft px-4 py-2 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent" required>
-                        <option value="">Select Duration of Sunlight </option>
-                        <option value="<2 hrs" >less than 2 hrs</option>
-                        <option value="2-4 hrs" > 2-4 hrs</option>
-                        <option value="4-6 hrs" >4-6 hrs</option>
-                        <option value="6-8 hrs" >6-8 hrs</option>
-                        <option value=">8 hrs" >more than 8 hrs</option>
-                        </select>
-                     </div>
                      <div>
                         <label class="block text-sm font-medium text-neutral-700 mb-2">Subject</label>
-                        <select  name="plantType" class="w-full px-4 py-2 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent" required>
+                        <select  name="query" class="w-full px-4 py-2 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent" required>
                         <option value="">Select a topic</option>
                         <option value="general inquiry" >General Inquiry</option>
                         <option value="consultation request" >Consultation Request</option>
@@ -95,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             </select>
                      </div>
                      <div>
-                         <label class="block text-sm font-medium text-neutral-700 mb-2">Garden Purpose</label>
+                         <label class="block text-sm font-medium text-neutral-700 mb-2">Garden Purpose(Optional)</label>
                          <select  name="purpose" class="w-full px-4 py-2 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent">
                          <option value="">Select Garden Purpose </option>
                          <option value="Personal Relaxation" >😇 Personal Relaxation(Reading, Meditaion, etc)</option>
@@ -107,12 +82,9 @@ document.addEventListener('DOMContentLoaded', () => {
                          </select>
                       </div>
                         <div>
-                            <label class="block text-sm font-medium text-neutral-700 mb-2">Message</label>
+                            <label class="block text-sm font-medium text-neutral-700 mb-2">Message (Optional)</label>
                             <textarea rows="4" name="description" placeholder="More Specification About Your Garden" class="w-full px-4 py-2 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"></textarea>
                         </div>
-                        
-                       
-
                         <button type="submit"  class="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors">
                             Send Message
                         </button>
@@ -240,10 +212,10 @@ const form=document.getElementById('contactForm');
             const email = document.querySelector('input[name="email"]').value;
             const contact = document.querySelector('input[name="phone"]').value;
             const address=document.querySelector('input[name="address"]').value;
+            const query= document.querySelector('select[name="query"]').value;
             const description = document.querySelector('textarea[name="description"]').value;
            const area=document.querySelector('input[name="length"]').value +"x"+ document.querySelector('input[name="breadth"]').value +" feet";
            const gardenType = document.querySelector('select[name="garden"]').value;
-           const light=document.querySelector('select[name="exposure"]').value+" "+ document.querySelector('select[name="duration"]').value;
            const orientation=document.querySelector('select[name="orientation"]').value;
            const purpose = document.querySelector('select[name="purpose"]').value;
            const formData = {
@@ -253,8 +225,8 @@ const form=document.getElementById('contactForm');
             customerAddress: address,
             customerGarden: gardenType,
             customerArea: area,
+            customerQuery: query,
             customerSpecification: description, // or description, depending on your backend
-            lightDuration: light,
             gardenOrientaion:orientation,
             gardenPurpose:purpose
            // Include the message in the form data
