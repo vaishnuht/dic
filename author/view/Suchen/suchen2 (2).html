@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design Blueprint with Image Manipulation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+
+<body>
+    <nav class="bg-white border-gray-200 dark:bg-gray-900">
+        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-2 p-2">
+        <a href="#" class="flex items-center space-x-3 p-4 rtl:space-x-reverse">
+            <!-- <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Flowbite Logo" /> -->
+            <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">PlantCare </span>
+        </a>
+        <div class="flex items-center md:order-2 space-x-3 md:space-x-0 m-3 rtl:space-x-reverse">
+            <button type="button" class="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
+              <span class="sr-only">Open user menu</span>
+              <img class="w-8 h-8 rounded-full" src="/docs/images/people/profile-picture-3.jpg" alt="user photo">
+            </button>
+            <!-- Dropdown menu -->
+            <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow-sm dark:bg-gray-700 dark:divide-gray-600" id="user-dropdown">
+              <div class="px-4 py-3">
+                <span class="block text-sm text-gray-900 dark:text-white">Bonnie Green</span>
+                <span class="block text-sm  text-gray-500 truncate dark:text-gray-400">name@flowbite.com</span>
+              </div>
+              <ul class="py-2" aria-labelledby="user-menu-button">
+                  <li>
+                  <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Settings</a>
+                </li>
+                <li>
+                  <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Earnings</a>
+                </li>
+                <li>
+                  <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</a>
+                </li>
+              </ul>
+            </div>
+            <button data-collapse-toggle="navbar-user" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-user" aria-expanded="false">
+              <span class="sr-only">Open main menu</span>
+              <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+              </svg>
+          </button>
+        </div>
+        <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-user">
+          <ul class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+            <li>
+              <a href="../overview.html" class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Overview</a>
+            </li>
+            <li>
+              <a href="../suggest.html" class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Suggest</a>
+            </li>
+            <li>
+              <a href="../ai-chatBot-dashboard/index.html" class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Help</a>
+            </li>
+            <li>
+              <a href="#" class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Layout</a>
+            </li>
+          </ul>
+        </div>
+        </div>
+      </nav>
+    <div class="top-navbar">
+        
+            <label for="length">Length (feet):</label>
+            <input type="number" id="length" min="0" required>
+        </div>
+        <div>
+            <label for="breadth">Breadth (feet):</label>
+            <input type="number" id="breadth" min="0" required>
+        </div>
+        <button class="design" onclick="designBlueprint()">Design Canvas</button>
+        
+        <button onclick="removeAllImages()">Remove All</button>
+        <!-- <button onclick="downloadCanvas('png')">Download PNG</button> -->
+    </div>
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <button class="dropdown-btn">Basic Suggestions<i class="fa fa-caret-down"></i></button>
+        <div class="dropdown-container">
+          
+        </div>
+        <button class="dropdown-btn">Floor<i class="fa fa-caret-down"></i></button>
+        <div class="dropdown-container">
+            <button class="dropdown-btn">Flooring Material<i class="fa fa-caret-down"></i></button>
+            <div class="dropdown-container">
+                    <button
+                        onclick="setFloorBackground('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGaO39FaNGiEe2_tQgHH_h4_z9_B_q3QZdTw&s')">Wooden
+                        Flooring</button>
+                    <button
+                        onclick="setFloorBackground('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-6tYS2OIBRENzCixGcP0_OqddSb6UArHuNA&s')">Tiles</button>
+                    <button
+                        onclick="setFloorBackground('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRV0gFkgormhYOsx1sWOmMMdX6RJVZqvvdm4w&s')">Artificial
+                        Grass</button>
+                    <button
+                        onclick="setFloorBackground('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSESMoMIQLtAB742Wmik5HUf3wsPhXbkxgexA&s')">Rubber
+                        Mat</button>        
+
+            </div>
+            <button class="dropdown-btn">Drainage System<i class="fa fa-caret-down"></i></button>
+            <!-- <div class="dropdown-container">
+                <a href="#">Ensure proper drainage</a>
+                <a href="#">use trays under pots</a>
+            </div> -->
+        </div>
+        <button class="dropdown-btn">Pots<i class="fa fa-caret-down"></i></button>
+        <div class="dropdown-container">
+            <button class="dropdown-btn">Materials<i class="fa fa-caret-down"></i></button>
+            <div class="dropdown-container">
+                <a href="#">Terracotta</a>
+                <a href="#">Plastic</a>
+                <a href="#">Ceramic</a>
+                <a href="#">Fabric Grow Bags</a>
+                <a href="#">Metal</a>
+            </div>
+        </div>
+        <button class="dropdown-btn">Type Of Plants<i class="fa fa-caret-down"></i></button>
+        <div class="dropdown-container">
+            <button class="dropdown-btn">Sun-Loving Plants<i class="fa fa-caret-down"></i></button>
+            <div class="dropdown-container">
+                <button onclick="addImage('decorative.png')">decorative</button>
+                <button onclick="addImage('cacti.png')">Catus</button>
+                <button onclick="addImage('bushes.png')">Bushes</button>
+                <button onclick="addImage('succulent2.png')">Succulents</button>
+                <button onclick="addImage('shrub.png')">Shrubs</button>
+                <button onclick="addImage('herbs.png')">Herbs</button>
+                <button onclick="addImage('succulent1.png')">Leafy Vegetable</button>
+                <button onclick="addImage('fruit.png')">Fruit Plants</button>
+                <button onclick="addImage('fern.png')">Ferns (Boston Fern, Maidenhair Fern)</button>
+                <button onclick="addImage('flowering_plant.png')">Flowers (Impatiens, Begonias)</button>
+                <button onclick="addImage('succulent1.png')">Ornamental Plants (Caladium, Coleus)</button>
+                <button onclick="addImage('tree.png')">Tree</button>
+                <button onclick="addImage('big_tree.png')">Big Tree</button>
+              
+            </div>
+<!--           
+            <button class="dropdown-btn">Climbing Plants<i class="fa fa-caret-down"></i></button>
+            <div class="dropdown-container">
+                <a href="#">Vines (Jasmine, Bougainvillaea, Ivy)</a>
+                <a href="#">Trellis Plants (Peas, Beans, Climbing Roses)</a>
+            </div> -->
+        </div>
+
+        <button class="dropdown-btn">Accessories<i class="fa fa-caret-down"></i></button>
+        <div class="dropdown-container">
+            <button class="dropdown-btn">Plant Supports<i class="fa fa-caret-down"></i></button>
+            <div class="dropdown-container">
+                <a href="#">Trellises and Arches (for climbing plants)</a>
+                <a href="#">Plant Stakes (to support tall plants)</a>
+            </div>
+            <button class="dropdown-btn">Decorative Items<i class="fa fa-caret-down"></i></button>
+            <div class="dropdown-container">
+                <a href="#">Garden Statues</a>
+                <a href="#">Outdoor Rugs</a>
+                <a href="#">Fairy Lights</a>
+            </div>
+            <button class="dropdown-btn">Furniture<i class="fa fa-caret-down"></i></button>
+            <div class="dropdown-container">
+                <button onclick="addImage('teapoy.png')">Table </button>
+                <button onclick="addImage('bench.png')">Bench</button>
+                <button onclick="addImage('angle_bench.png')">Corner Bench</button>
+                <button onclick="addImage('table_chair.png')">Outdoor dining</button>
+                
+            </div>
+        </div>
+
+        <button class="dropdown-btn">Other <i class="fa fa-caret-down"></i></button>
+        <div class="dropdown-container">
+            <button onclick="addImage('round_pond.png')">Round Pond</button>
+            <button onclick="addImage('shapedPont.png')">Pond </button>
+            <button onclick="addImage('metal_fencing.png')">Metal Boundries</button>
+            <button onclick="addImage('wall_fencing.png')">Wall</button>
+            <button onclick="addImage('wooden_fencing.png')">Wooden Boundries</button>
+            <button onclick="addImage('stone_wall.png')">Stone Wall</button>
+            <button class="dropdown-btn">Watering Systems<i class="fa fa-caret-down"></i></button>
+            <div class="dropdown-container">
+                <a href="#">Drip Irrigation</a>
+                <a href="#">Self-Watering Pots</a>
+                <a href="#">Watering Cans</a>
+            </div>
+            <button class="dropdown-btn">Rainwater Harvesting<i class="fa fa-caret-down"></i></button>
+            <div class="dropdown-container">
+                <a href="#">Collect rainwater in barrels for garden use</a>
+            </div>
+            <button class="dropdown-btn">Moisture Meters<i class="fa fa-caret-down"></i></button>
+            <div class="dropdown-container">
+                <a href="#">Monitor soil moisture levels to prevent overwatering</a>
+            </div>
+        </div>
+        <button class="dropdown-btn">Other Considerations<i class="fa fa-caret-down"></i></button>
+        <div class="dropdown-container">
+            <a href="#">Pest Control: Use organic pesticides, natural predators like ladybugs, regularly check plants
+                for pests</a>
+            <a href="#">Fertilization: Use organic compost or liquid fertilizers, follow a regular feeding schedule
+                based on plant needs</a>
+            <a href="#">Seasonal Care: Adjust watering and fertilization routines according to seasons, protect plants
+                from extreme weather conditions with covers or shade nets</a>
+            <a href="#">Sustainability Practices: Compost kitchen waste for organic fertilizer, use eco-friendly and
+                biodegradable products</a>
+        </div>
+    </div>
+
+    <div id="workspaceCanvas">
+        <div id="blueprint-container" class="blueprint-container">
+            <div id="blueprint" class="blueprint"></div>
+        </div>
+        <div id="data"></div>
+    </div>
+
+    <canvas id="canvas"></canvas>
+
+    <script src="script.js">
+    </script>
+</body>
+
+</html>

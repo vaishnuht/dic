@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plant Suggestion</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-4">
+    <nav class="bg-white border-gray-200 dark:bg-gray-900">
+        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-2 p-2">
+        <a href="#" class="flex items-center space-x-3 p-4 rtl:space-x-reverse">
+            <!-- <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Flowbite Logo" /> -->
+            <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">PlantCare </span>
+        </a>
+        <div class="flex items-center md:order-2 space-x-3 md:space-x-0 m-3 rtl:space-x-reverse">
+            <button type="button" class="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
+              <span class="sr-only">Open user menu</span>
+              <img class="w-8 h-8 rounded-full" src="/docs/images/people/profile-picture-3.jpg" alt="user photo">
+            </button>
+            <!-- Dropdown menu -->
+            <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow-sm dark:bg-gray-700 dark:divide-gray-600" id="user-dropdown">
+              <div class="px-4 py-3">
+                <span class="block text-sm text-gray-900 dark:text-white">Bonnie Green</span>
+                <span class="block text-sm  text-gray-500 truncate dark:text-gray-400">name@flowbite.com</span>
+              </div>
+              <ul class="py-2" aria-labelledby="user-menu-button">
+                  <li>
+                  <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Settings</a>
+                </li>
+                <li>
+                  <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Earnings</a>
+                </li>
+                <li>
+                  <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</a>
+                </li>
+              </ul>
+            </div>
+            <button data-collapse-toggle="navbar-user" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-user" aria-expanded="false">
+              <span class="sr-only">Open main menu</span>
+              <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+              </svg>
+          </button>
+        </div>
+        <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-user">
+          <ul class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+            <li>
+              <a href="./overview.html" class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Overview</a>
+            </li>
+            <li>
+              <a href="./suggest.html" class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Suggest</a>
+            </li>
+            <li>
+              <a href="./ai-chatBot-dashboard/index.html" class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Help</a>
+            </li>
+            <li>
+              <a href="./Suchen/suchen2 (2).html" class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Layout</a>
+            </li>
+          </ul>
+        </div>
+        </div>
+      </nav>
+    <div class="max-w-4xl mx-auto bg-white p-6 border border-gray-300 rounded-md">
+        <h1 class="text-3xl font-semibold mb-4">Suggest Plant</h1>
+
+        <form id="plantForm" class="space-y-4">
+            <div>
+                <label for="location" class="block text-sm font-medium text-gray-700">Location</label>
+                <input type="text" id="location" name="location" placeholder="city, state" class="mt-1 p-2 w-full border rounded-md" required>
+            </div>
+            <div>
+                <label for="plantType" class="block text-sm font-medium text-gray-700">Plant Type</label>
+                <input type="text" id="plantType" name="plantType" placeholder="fruits, vegetables, etc." class="mt-1 p-2 w-full border rounded-md" required>
+            </div>
+            <div>
+                <label for="area" class="block text-sm font-medium text-gray-700">Area (feet)</label>
+                <input type="number" id="area" name="area" placeholder="length * breadth" class="mt-1 p-2 w-full border rounded-md" required>
+            </div>
+            <div>
+                <label for="season" class="block text-sm font-medium text-gray-700">Season</label>
+                <input type="text" id="season" name="season" placeholder="spring, summer, autumn, winter, etc." class="mt-1 p-2 w-full border rounded-md" required>
+            </div>
+            <div>
+                 <label for="gardenType" class="block text-sm font-medium text-gray-700">Garden Type</label>
+                <input type="text" id="gardenType" name="gardenType" placeholder="indoor, outdoor, balcony, etc." class="mt-1 p-2 w-full border rounded-md" required>
+            </div>
+            <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Search</button>
+        </form>
+
+        <div id="responseContainer" class="mt-6 grid grid-cols-1 md:grid-cols-auto-fill gap-4 justify-items-stretch">
+            </div>
+
+        <div id="loadingIndicator" class="mt-4 space-y-2 hidden">
+            <div class="bg-gray-200 h-4 rounded-full"></div>
+            <div class="bg-gray-200 h-16 rounded-md"></div>
+            <div class="bg-gray-200 h-16 rounded-md"></div>
+        </div>
+
+        <div id="errorDisplay" class="text-red-500 mt-4 hidden">
+            </div>
+    </div>
+
+    <script>
+        document.getElementById('plantForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+
+            const location = document.getElementById('location').value;
+            const plantType = document.getElementById('plantType').value;
+            const area = document.getElementById('area').value;
+            const season = document.getElementById('season').value;
+             const gardenType = document.getElementById('gardenType').value;
+
+            if (!location.trim() || !plantType.trim() || !area.trim() || !season.trim() || !gardenType.trim()) {
+                alert('Please fill all fields.');
+                return;
+            }
+
+            document.getElementById('responseContainer').innerHTML = ''; // Clear previous response
+            document.getElementById('errorDisplay').classList.add('hidden'); // Hide any previous error
+            document.getElementById('loadingIndicator').classList.remove('hidden'); // Show loading
+
+            const API_KEY = "AIzaSyB-LN7xjp98ETk0d3l2ZU-r6wp0I4lEFII"; // Replace with your actual API key
+            const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
+            const prompt = `location: ${location}\nSeason: ${season}\nplace to grow: ${area}\ntype of plant: ${plantType}\nAvailable GardenType: ${gardenType}\nSuggest 6 Plants Based on Above Information in json format\nOutput:\nPlant Name : (local +scientific)\nPlant Image: include image of plant\nPlant benifits: health and environmental benifits of plant\nPlanting suggestion for plant\nPlant Care: how to take care of that plant for best result (include watering , fertilizer, purning, sunlight)\nYield generated : Per plant output in season with good care\nNote : only Json Object should return by removing other data`;
+
+            const requestOptions = {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    contents: [{ parts: [{ text: prompt }] }],
+                }),
+            };
+
+            try {
+                const response = await fetch(API_URL, requestOptions);
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(`API Error: ${response.status} - ${errorData?.error?.message || response.statusText}`);
+                }
+
+                const data = await response.json();
+                let apiResponseText = data.candidates[0].content.parts[0].text;
+
+                try {
+                    const startIndex = apiResponseText.indexOf('[');
+                    const endIndex = apiResponseText.lastIndexOf(']');
+                    if (startIndex !== -1 && endIndex !== -1) {
+                        apiResponseText = apiResponseText.substring(startIndex, endIndex + 1).trim();
+                        const parsedResponse = JSON.parse(apiResponseText);
+                        displayResults(parsedResponse);
+                    } else {
+                        throw new Error("Could not find valid JSON in the response.");
+                    }
+                } catch (parseError) {
+                    console.error("Error parsing JSON:", parseError, apiResponseText);
+                    document.getElementById('errorDisplay').textContent = "Invalid JSON response from API.";
+                    document.getElementById('errorDisplay').classList.remove('hidden');
+                }
+            } catch (error) {
+                console.error("API request error:", error);
+                document.getElementById('errorDisplay').textContent = "Error fetching data from the API.";
+                document.getElementById('errorDisplay').classList.remove('hidden');
+            } finally {
+                document.getElementById('loadingIndicator').classList.add('hidden');
+                document.getElementById('plantForm').reset();
+            }
+        });
+
+        function displayResults(plants) {
+            const container = document.getElementById('responseContainer');
+            if (!Array.isArray(plants)) {
+                document.getElementById('errorDisplay').textContent = "API response is not in correct format";
+                document.getElementById('errorDisplay').classList.remove('hidden');
+                return;
+            }
+
+            plants.forEach(plant => {
+                const card = document.createElement('div');
+                card.classList.add('border', 'rounded-md', 'p-4');
+                card.innerHTML = `
+                    <h5 class="text-xl font-semibold text-green-600">${plant["Plant Name"].local} <br> ${plant["Plant Name"].scientific}</h5>
+                    <p><b>Benefits:</b> Environmental: ${plant["Plant benefits"].environmental} <br> Health: ${plant["Plant benefits"].health}</p>
+                    <p><b>Planting:</b> ${plant["Planting suggestion"]}</p>
+                    <p><b>Care:</b> Pruning: ${plant["Plant Care"].pruning} <br> Watering: ${plant["Plant Care"].watering} <br> Fertilizer: ${plant["Plant Care"].fertilizer} <br> Sunlight: ${plant["Plant Care"].sunlight}</p>
+                    <p><b>Yield:</b> ${plant["Yield generated"]}</p>
+                `;
+                container.appendChild(card);
+            });
+        }
+    </script>
+</body>
+</html>
