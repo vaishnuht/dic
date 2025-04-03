@@ -3,6 +3,7 @@ body {
     flex-direction: column;
     align-items: center;
     font-family: Arial, sans-serif;
+    background-color: #ccc8c8;
 }
 .top-navbar {
     display: flex;
@@ -156,4 +157,61 @@ body {
 #data {
     margin-top: 20px;
     font-size: 16px;
+}
+
+
+nav {
+    width: 100%;
+    background-color: #ffffff;
+    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+    border:solid 20px #ccc8c8 ;
+}
+
+.logo {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #333;
+    margin-left: 20%;
+    padding: 20px 4px;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    padding: 8px 12px;
+    border-radius: 4px;
+}
+
+.nav-links a:hover {
+    background-color: #e0e0e0;
+}
+
+.profile-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #07111c; /* Example color */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    margin-right: 50px;
+    /* font-weight: bold; */
+    cursor: pointer;
 }
